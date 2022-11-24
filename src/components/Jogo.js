@@ -1,43 +1,47 @@
 export default function Jogo(props) {
-    const {palavras, setClassName, setDisableButton, word, setWord, selectedLetter} = props;
-    let array =[];
-    let ocult = [];
-    let arr = []
+    const {
+        palavras, setClassName, setDisableButton, word, setWord, selectedLetter,
+        errorCounter, setErrorCounter, setClicked, newArray, setNewArray,
+        setSelectedLetter, wordArray, setWordArray, ocultArray, setOcultArray, color, setColor
+    } = props;
+    console.log(word)
 
-    function startGame(){
+    function startGame() {
         setClassName("letter-selected");
         setDisableButton(false);
-        setWord(palavras[Math.floor(Math.random()*palavras.length)]);
-    }
-    for (let i = 0; i < word.length; i++){
-        array.push(`${word[i]}`);
-        array.push(" ");
-    }
+        const newWord = palavras[Math.floor(Math.random() * palavras.length)]
+        setWord(newWord);
+        setErrorCounter(0);
+        setClicked([]);
+        setSelectedLetter('');
+        setColor('black');
 
-    for (let i = 0; i < array.length; i++){
-        if (array[i] === " "){
-            ocult.push(" ")
-        }else {
-            ocult.push("_")
+        for (let i = 0; i < newWord.length; i++) {
+            wordArray.push(`${newWord[i]}`);
+            wordArray.push(" ");
+            //console.log(wordArray)
+        }
+        for (let i = 0; i < wordArray.length; i++) {
+            if (wordArray[i] === " ") {
+                ocultArray.push(" ")
+            } else {
+                ocultArray.push("_")
+            }
         }
     }
 
-    for (let i = 0; i < array.length; i++){
-        if (array[i] === selectedLetter){
-            ocult[i] = selectedLetter
-        }
-    }
+    
 
-    console.log(array)
-    console.log(ocult)
-    console.log(selectedLetter)
+    //console.log(wordArray)
+    // console.log(ocultArray)
+    // console.log(selectedLetter)
 
     return (
         <>
             <div className="game">
-                <img className="forca" src="assets/forca0.png" />
+                <img className="forca" src={`assets/forca${errorCounter}.png`} />
                 <button onClick={startGame} className="start-game">Escolher Palavra</button>
-                <div className="word">{ocult}</div>
+                <div className={`word ${color}`}>{errorCounter < 6 ? ocultArray : word}</div>
             </div>
         </>
     );
