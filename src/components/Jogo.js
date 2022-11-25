@@ -3,7 +3,7 @@ export default function Jogo(props) {
         palavras, setClassName, setDisableButton, word, setWord, selectedLetter,
         errorCounter, setErrorCounter, setClicked, newArray, setNewArray,
         setSelectedLetter, wordArray, setWordArray, ocultArray, setOcultArray, color, setColor,
-        correctAnswer, setCorrectAnswer,
+        correctAnswer, setCorrectAnswer, setInputWord
     } = props;
 
     function startGame() {
@@ -17,6 +17,7 @@ export default function Jogo(props) {
         setSelectedLetter('');
         setColor('black');
         setCorrectAnswer(0);
+        setInputWord('');
 
         for (let i = 0; i < newWord.length; i++) {
             wordArray.push(`${newWord[i]}`);
@@ -34,9 +35,9 @@ export default function Jogo(props) {
     return (
         <>
             <div className="game">
-                <img className="forca" src={`assets/forca${errorCounter}.png`} />
-                <button onClick={startGame} className="start-game">Escolher Palavra</button>
-                <div className={`word ${color}`}>{errorCounter < 6 && correctAnswer == 0 ? ocultArray : word}</div>
+                <img data-test="game-image" className="forca" src={`assets/forca${errorCounter}.png`} />
+                <button data-test="choose-word" onClick={startGame} className="start-game">Escolher Palavra</button>
+                <div data-test="word" data-answer={word} className={`word ${color}`}>{errorCounter < 6 && correctAnswer == 0 ? ocultArray : word}</div>
             </div>
         </>
     );

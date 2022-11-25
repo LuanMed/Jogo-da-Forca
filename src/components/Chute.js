@@ -1,10 +1,9 @@
 export default function Chute(props) {
     const { inputWord, setInputWord, word, setDisableButton, setClassName,
-        setColor, setErrorCounter, setCorrectAnswer, setWordArray, setOcultArray
+        setColor, setErrorCounter, setCorrectAnswer, setWordArray, setOcultArray, disableButton,
     } = props;
 
     function tryWord() {
-        console.log("palavra digitada " + inputWord)
         if (inputWord == word) {
             setDisableButton(true);
             setClassName("letter-unselected");
@@ -27,10 +26,12 @@ export default function Chute(props) {
         <div className="answer-field">
             <p>Já sei a palavra!</p>
             <input
+                data-test="guess-input"
+                disabled={disableButton}
                 value={inputWord}
                 onChange={(e) => setInputWord(e.target.value)}
             />
-            <button onClick={tryWord}>Chutar</button>
+            <button data-test="guess-button" disabled={disableButton} onClick={tryWord}>Chutar</button>
         </div>
     );
 }

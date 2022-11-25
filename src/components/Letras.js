@@ -20,7 +20,7 @@ export default function Letras(props) {
             }
         }
 
-        if (!ocultArray.includes("_")){
+        if (!ocultArray.includes("_")) {
             setDisableButton(true);
             setClassName("letter-unselected");
             setColor('green');
@@ -32,7 +32,6 @@ export default function Letras(props) {
         if (!wordArray.includes(letter)) {
             error = errorCounter + 1
             setErrorCounter(error);
-            console.log(error);
         }
         if (error === 6) {
             setDisableButton(true);
@@ -47,6 +46,7 @@ export default function Letras(props) {
         <div className="letters">
             {alphabet.map(letter =>
                 <button
+                    data-test="letter"
                     key={letter}
                     disabled={clicked.includes(letter) ? true : disableButton}
                     onClick={() => selectLetter(letter)}

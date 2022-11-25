@@ -42,6 +42,7 @@ function App() {
         setColor={setColor}
         correctAnswer={correctAnswer}
         setCorrectAnswer={setCorrectAnswer}
+        setInputWord={setInputWord}
       />
       <Letras
         className={className}
@@ -73,6 +74,7 @@ function App() {
         setCorrectAnswer={setCorrectAnswer}
         setWordArray={setWordArray}
         setOcultArray={setOcultArray}
+        disableButton={disableButton}
       />
     </main>
   );
