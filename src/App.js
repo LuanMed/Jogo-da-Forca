@@ -13,9 +13,11 @@ function App() {
   const [errorCounter, setErrorCounter] = useState(0);
   const [clicked, setClicked] = useState([]);
   const [newArray, setNewArray] = useState([]);
-  const [wordArray, setWordArray]  = useState([]);
-  const [ocultArray, setOcultArray]  = useState([]);
-  const [color, setColor] = useState('')
+  const [wordArray, setWordArray] = useState([]);
+  const [ocultArray, setOcultArray] = useState([]);
+  const [color, setColor] = useState('');
+  const [inputWord, setInputWord] = useState('');
+  const [correctAnswer, setCorrectAnswer] = useState(0);
 
   return (
     <main className="main">
@@ -38,6 +40,8 @@ function App() {
         setSelectedLetter={setSelectedLetter}
         color={color}
         setColor={setColor}
+        correctAnswer={correctAnswer}
+        setCorrectAnswer={setCorrectAnswer}
       />
       <Letras
         className={className}
@@ -56,8 +60,20 @@ function App() {
         setErrorCounter={setErrorCounter}
         setColor={setColor}
         word={word}
+        setCorrectAnswer={setCorrectAnswer}
       />
-      <Chute />
+      <Chute
+        inputWord={inputWord}
+        setInputWord={setInputWord}
+        word={word}
+        setDisableButton={setDisableButton}
+        setClassName={setClassName}
+        setColor={setColor}
+        setErrorCounter={setErrorCounter}
+        setCorrectAnswer={setCorrectAnswer}
+        setWordArray={setWordArray}
+        setOcultArray={setOcultArray}
+      />
     </main>
   );
 }
