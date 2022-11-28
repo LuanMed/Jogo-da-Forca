@@ -3,6 +3,7 @@ import Chute from "./components/Chute";
 import Jogo from "./components/Jogo";
 import Letras from "./components/Letras";
 import { useState } from "react";
+import forca0 from './assets/forca0.png';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
   const [color, setColor] = useState('');
   const [inputWord, setInputWord] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState(0);
+  const [currentImage, setCurrentImage] = useState(forca0);
 
   return (
     <main className="main">
@@ -25,24 +27,21 @@ function App() {
         palavras={palavras}
         setClassName={setClassName}
         setDisableButton={setDisableButton}
-        word={word} setWord={setWord}
-        selectedLetter={selectedLetter}
+        word={word}
+        setWord={setWord}
         errorCounter={errorCounter}
         setErrorCounter={setErrorCounter}
         setClicked={setClicked}
-        newArray={newArray}
-        setNewArray={setNewArray}
         wordArray={wordArray}
-        setWordArray={setWordArray}
         ocultArray={ocultArray}
-        setOcultArray={setOcultArray}
-        clicked={clicked}
         setSelectedLetter={setSelectedLetter}
         color={color}
         setColor={setColor}
         correctAnswer={correctAnswer}
         setCorrectAnswer={setCorrectAnswer}
         setInputWord={setInputWord}
+        currentImage={currentImage}
+        setCurrentImage={setCurrentImage}
       />
       <Letras
         className={className}
@@ -60,8 +59,8 @@ function App() {
         errorCounter={errorCounter}
         setErrorCounter={setErrorCounter}
         setColor={setColor}
-        word={word}
         setCorrectAnswer={setCorrectAnswer}
+        setCurrentImage={setCurrentImage}
       />
       <Chute
         inputWord={inputWord}
@@ -75,6 +74,7 @@ function App() {
         setWordArray={setWordArray}
         setOcultArray={setOcultArray}
         disableButton={disableButton}
+        setCurrentImage={setCurrentImage}
       />
     </main>
   );

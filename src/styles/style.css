@@ -85,7 +85,7 @@
     display: flex;
     align-items: center;
     margin: auto;
-    height: 40px;
+    min-height: 40px;
 }
 
 .answer-field p {
@@ -124,4 +124,29 @@
 
 .black{
     color: #000000;
+}
+
+@media (max-width: 614px){
+    .game{
+        margin: 10px 10px 0 10px;
+    }
+    .forca{
+        width: 200px;
+    }
+    .start-game {
+        width: 100px;
+    }
+    .word{
+        font-size: 25px;
+    }
+    .letters{
+        justify-content: center;
+    }
+    .answer-field{
+        flex-direction: column;
+    }
+    .answer-field input {
+        width: 253px;
+        margin: 20px 0 20px 0;
+    }
 }

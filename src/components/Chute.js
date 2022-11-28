@@ -1,10 +1,13 @@
+import forca6 from '../assets/forca6.png';
+
 export default function Chute(props) {
-    const { inputWord, setInputWord, word, setDisableButton, setClassName,
-        setColor, setErrorCounter, setCorrectAnswer, setWordArray, setOcultArray, disableButton,
+    const {
+        inputWord, setInputWord, word, setDisableButton, setClassName, setColor,
+        setErrorCounter, setCorrectAnswer, setWordArray, setOcultArray, disableButton, setCurrentImage
     } = props;
 
     function tryWord() {
-        if (inputWord == word) {
+        if (inputWord.toLowerCase() == word) {
             setDisableButton(true);
             setClassName("letter-unselected");
             setColor('green');
@@ -16,6 +19,7 @@ export default function Chute(props) {
             setClassName("letter-unselected");
             setColor('red');
             setErrorCounter(6);
+            setCurrentImage(forca6);
             setWordArray([]);
             setOcultArray([]);
         }

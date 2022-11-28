@@ -1,16 +1,16 @@
+import forca0 from '../assets/forca0.png';
+
 export default function Jogo(props) {
     const {
-        palavras, setClassName, setDisableButton, word, setWord, selectedLetter,
-        errorCounter, setErrorCounter, setClicked, newArray, setNewArray,
-        setSelectedLetter, wordArray, setWordArray, ocultArray, setOcultArray, color, setColor,
-        correctAnswer, setCorrectAnswer, setInputWord
+        palavras, setClassName, setDisableButton, word, setWord, errorCounter, setErrorCounter, setClicked, setSelectedLetter,
+        wordArray, ocultArray, color, setColor, correctAnswer, setCorrectAnswer, setInputWord, currentImage, setCurrentImage
     } = props;
 
     function startGame() {
+
         setClassName("letter-selected");
         setDisableButton(false);
         const newWord = palavras[Math.floor(Math.random() * palavras.length)];
-        console.log(newWord)
         setWord(newWord);
         setErrorCounter(0);
         setClicked([]);
@@ -18,6 +18,9 @@ export default function Jogo(props) {
         setColor('black');
         setCorrectAnswer(0);
         setInputWord('');
+        setCurrentImage(forca0);
+        wordArray.splice(0, (wordArray.length));
+        ocultArray.splice(0, (ocultArray.length));
 
         for (let i = 0; i < newWord.length; i++) {
             wordArray.push(`${newWord[i]}`);
@@ -35,7 +38,7 @@ export default function Jogo(props) {
     return (
         <>
             <div className="game">
-                <img data-test="game-image" className="forca" src={`assets/forca${errorCounter}.png`} />
+                <img data-test="game-image" className="forca" src={currentImage} />
                 <button data-test="choose-word" onClick={startGame} className="start-game">Escolher Palavra</button>
                 <div data-test="word" data-answer={word} className={`word ${color}`}>{errorCounter < 6 && correctAnswer == 0 ? ocultArray : word}</div>
             </div>

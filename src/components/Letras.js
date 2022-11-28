@@ -1,10 +1,16 @@
 import React from "react";
+import forca1 from '../assets/forca1.png';
+import forca2 from '../assets/forca2.png';
+import forca3 from '../assets/forca3.png';
+import forca4 from '../assets/forca4.png';
+import forca5 from '../assets/forca5.png';
+import forca6 from '../assets/forca6.png';
 
 export default function Letras(props) {
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    const { className, setClassName, disableButton, setDisableButton, setSelectedLetter,
-        clicked, setClicked, wordArray, setWordArray, ocultArray, setOcultArray,
-        selectedLetter, errorCounter, setErrorCounter, setColor, word, setCorrectAnswer
+    const {
+        className, setClassName, disableButton, setDisableButton, setSelectedLetter, clicked, setClicked, wordArray,
+        setWordArray, ocultArray, setOcultArray, errorCounter, setErrorCounter, setColor, setCorrectAnswer, setCurrentImage
     } = props;
 
     function selectLetter(letter) {
@@ -16,7 +22,6 @@ export default function Letras(props) {
         for (let i = 0; i < wordArray.length; i++) {
             if (wordArray[i] === letter) {
                 ocultArray[i] = letter
-                let novoArray = [...ocultArray];
             }
         }
 
@@ -32,6 +37,19 @@ export default function Letras(props) {
         if (!wordArray.includes(letter)) {
             error = errorCounter + 1
             setErrorCounter(error);
+            if (error == 1) {
+                setCurrentImage(forca1);
+            } else if (error == 2) {
+                setCurrentImage(forca2);
+            } else if (error == 3) {
+                setCurrentImage(forca3);
+            } else if (error == 4) {
+                setCurrentImage(forca4);
+            } else if (error == 5) {
+                setCurrentImage(forca5);
+            } else if (error == 6) {
+                setCurrentImage(forca6);
+            }
         }
         if (error === 6) {
             setDisableButton(true);
